@@ -10,20 +10,6 @@ So far, we have successfully trained the model, but it only works with a **1S1P 
 This limitation suggests that the current model implementation might not fully support more complex bases. To diagnose the issue, we would need to examine the **DFTIO data** provided by DeePTB to see if the model fails at any specific point during training or input processing. You can check an example input file [here](https://github.com/floatingCatty/dftio/blob/main/test/data/abacus/INPUT).
 
 ---
-# SIESTA to DeePTB Workflow
-
-```mermaid
-flowchart TD
-    A[SIESTA .fdf / basis.dat / pbc.dat] --> B[Data Processing Scripts]
-    B --> C[Generate DeePTB Input Folder]
-    C --> D[DeePTB Model Training]
-    D --> E[Trained Hamiltonian / Predictions]
-
-    %% Optional step for validation
-    D --> F[Validate using DFTIO / Reference Data]
-
-
----
 
 
 ## About DeePTB
@@ -47,4 +33,17 @@ While DeePTB provides a robust framework for training tight-binding models, it c
 1. **Validate the input data** from SIESTA using the DeePTB DFTIO format.  
 2. **Test the model** with more complex bases by comparing predictions against known Hamiltonians using first dftio data and after siesta  
 4. **Document any failures or discrepancies** to guide future improvements in DeePTB training scripts.
+
+# SIESTA to DeePTB Workflow
+
+```mermaid
+flowchart TD
+    A[SIESTA .fdf / basis.dat / pbc.dat] --> B[Data Processing Scripts]
+    B --> C[Generate DeePTB Input Folder]
+    C --> D[DeePTB Model Training]
+    D --> E[Trained Hamiltonian / Predictions]
+
+    %% Optional step for validation
+    D --> F[Validate using DFTIO / Reference Data]
+
 
